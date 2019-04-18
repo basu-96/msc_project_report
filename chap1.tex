@@ -10,17 +10,151 @@ Band theory has been successful in explaining many properties of solids, like ro
 To explain collective excitation of spins at low temperatures, it suffices to consider
 a model in which the atoms are fixed at their equilibrium position and the Hamiltonian consists of spin-degrees of freedom only. The dynamics of spin on a particular lattice is affected by the spins at its nearest neighbour via \textit{exchange interaction}. This kind of spin-only interaction tends to order the classical spin vectors; resulting in a ordered ground state at zero temperature. Any fluctuation at a particular site is distributed over the lattice because of this interaction and these constitute the so-called \textit{spin waves}. The quantization of energies of spin-waves suggests us to treat the exciation quanta as a quasiparticle - \textit{particle} because they have a definite momentum (like electrons) and localization. 
 
-Recently, there has been a surge of activities in trying to understand the dynamics of magnons due to the possibility of development of devices on spin degrees of freedom. Spin current, the fundamental object of interest in spintronics research, is carried by magnons in magnetic insulators. Being a neutral quasi-particle, it is not expected that magnons exhibit any Hall effect. However, in 2010 it was suggested\cite{PhysRevLett.104.066403} that thermal Magnon Hall effect is possible in prinicple and a few months later it was indeed experimentally verified\cite{Onose297} on a 3D Pyrochlore lattice. 
+Recently, there has been a surge of activities in trying to understand the dynamics of magnons due to the possibility of development of devices on spin degrees of freedom. Spin current, the fundamental object of interest in spintronics research, is carried by magnons in magnetic insulators. Being a neutral quasi-particle, it is not expected that magnons exhibit any Hall effect. However, in 2010 it was suggested\cite{PhysRevLett.104.066403} that thermal Magnon Hall effect is possible in prinicple and later it was indeed experimentally verified\cite{Onose297} on a 3D Pyrochlore lattice. 
 
 ....topological nature of magnon hall effect....shindou, murakami
 
 \section{Berry phase}
------- formal derivation ---------
-\section{TKNN invariant}
------- Ando's review first chern index only ------
+Imagine a ball rolling on a table top with no friction. The ball will keep moving uniformly as long as external forces are absent. If the table is given a sudden jerk, the motion of the ball will instantaneously change and the trajectory may not be the same for subsequent time. Instead of a sudden jerk, if the table top is gradually moved, the ball will continue its uniform motion indefinitely. This is an example of an \textit{adiabatic process} where the system's(the moving ball in our example) internal time scale is much smaller the external one(timescale over which the table is moved).
 
-recent results.
- 
+In quantum mechanics, this idea is encapsulated in the form of
+Adiabatic theorem which states that: \textit{if the Hamiltonian is changed slowly from one initial form $ \mathrm{H}^i $ to final form $ \mathrm{H}^f $, the nth eigenstate $ \ket{\psi^i_n} $ of  $ \mathrm{H}^i $ will be translated to the nth eigenstate $\ket{\psi^f_n}$ of $ \mathrm{H}^f $ }. We let the Hmiltonian $\mathrm{H}$ depend on a collection of $N$ parameters $ R = (R_1, R_2,...,R_N) $ and let the time dependence of $R$ be adiabatic, that is $R(t)$ changes slowly with time. We want to study the time evolution of system initial prepared in the nth eigenstate. At $ t=0 $ we have
+\begin{equation}
+    H(R(0))\ket{n,R(0)} = E_n(R(0))\ket{n,R(0)}
+\end{equation}
+States at later times, $ \ket{\psi(t)} $ satisfy the Schrodinger equation
+\begin{equation}
+    H(R(t))\ket{\psi(t)} = i\hbar\dfrac{d}{dt}\ket{\psi(t)} 
+\end{equation}
+Adiabtic theorem tells us that the eigenstate $ \ket{n,R(0)} $ continues to be an eigenstate at later times:
+\begin{equation}
+    H(R(t))\ket{n,R(t)} = E_n(R(t))\ket{n,R(t)}
+\end{equation}
+A reasonable guess for the solution for the Schrodinger equation, given that we know the time evolution is slow, is that the initial state picks up a dynamical phase factor
+\begin{equation}
+    \ket{\psi(t)} = exp\left[ -\frac{i}{\hbar}\int^{t}_{0}E_n(R(t'))dt' \right]\ket{n,R(t)}
+\end{equation}
+Substituting into the Schr{\"o}dinger equation we arrive at the following absurd equation:
+\begin{equation}
+    0 = exp\left[ -\frac{i}{\hbar}\int^{t}_{0}E_n(R(t'))dt' \right]\dfrac{d}{dt} \ket{n,R(t)}
+\end{equation}
+Clearly, the above equation is inconclusive because by construction the $\ket{n,R(t)}$ must be time dependent. Note that the time dependence enters through the parameters. Our earlier guess must be modified to incorporate the dependence of the parameters. We do this by introducing a non-trivial phase factor in addition to the dynamical phase factor in the proposed solution:
+\begin{equation}
+    \ket{\psi(t)} = exp\left[ -\frac{i}{\hbar}\int^{t}_{0}E_n(R(t'))dt' \right]exp\left[ i\gamma _n(t) \right]\ket{n,R(t)}
+\end{equation}
+Substituting in the Schr{\"o}dinger equation and solving for $ \gamma _n $ :
+\begin{equation}
+    \dfrac{\partial}{\partial t}\ket{n,R(t)} + i\dfrac{d}{dt}\gamma _n(t)\ket{n,R(t)} = 0
+\end{equation}
+Taking the inner porduct on both sides with the normalized eigenstates:
+\begin{equation}
+    \dfrac{d}{dt}\gamma _n((t) = i\bra{n,R(t)}\dfrac{\partial}{\partial t}\ket{n,R(t)}
+\end{equation}
+Using \textit{chain derivative}:
+\begin{equation}
+    \gamma _n(t) = i\int^{t}_{0}\bra{n,R(t')}\dfrac{\partial}{\partial t'}\ket{n,R(t')}dt' = i\sum^{}_{\mu}\int^{R(t)}_{R(0)}\bra{n,R}\dfrac{\partial}{\partial R_\mu}\ket{n,R}dR_\mu
+\end{equation}
+This extra phase factor is called the \textit{Berry's phase}\cite{berry}. Usually, we are interested in this phase factor when the Hamiltonian is cyclic in time. Let us suppose that after time $ \mathrm{T} $ the set of parameters complete one loop, that is $ \mathrm{R(T)} = \mathrm{R(T)} $. The phase change of the state vector, apart from the dynamical contribution, is :
+\begin{equation}
+    \gamma _n(C) = i\oint_C \bra{n,R}\dfrac{\partial}{\partial R_{\mu}}\ket{n,R}dR_{\mu}
+\end{equation}
+where C is a closed loop in the n-dimensional parameter space. Expressing Berry's phase makes it clear why it is a geometric phase: the value of the closed loop integral depends on the path taken in the parameter space. Even if the system is brought back to the same physical state, the memory of the path taken is stored in this geometric phase.
+
+Berry curvature is another quantity of interest while discussing topological properties of physical systems. Quite simply, Berry curvature is defined as Berry phase per unit area in the parameter space; essentially giving us localized information contained in the Berry phase. In the following section, we show how Berry curvature manifests itself in Hall conductivity of a 2D system. 
+
+\section{Example: Hall conductivity}
+
+Let us consider a 2D electron system of size $ \mathrm{L} \cross \mathrm{L} $ in presence of perpendicular magnetic fields, the electric field $ \mathrm{E}$ and magnetic field $\mathrm{B}$ are applied along the y- and z-axes respectively. The effect of electric field enters the Hamiltonian as a perturbing potential $\mathrm{V} = -e\mathrm{E}y $. The energy eigenstates in this perturbing field :
+\begin{equation}
+    \ket{n}_{E} = \ket{n} + \sum^{}_{m(\neq n)}\frac{\bra{m}(-eEy\ket{n}}{E_n - E_m}\ket{m} + ...
+\end{equation}
+Since we are interested to find the Hall conductivity, we find the expectation of current density along the x-driection which is perpendicular to both the applied fields.
+\begin{equation}
+\begin{split}
+    \expval{j_x}_E &= \sum^{}_{n}f(E_n)\bra{n}_E\left( \frac{ev_x}{L^2} \right)\ket{n}_E\\
+    &= \expval{j_x}_{E=0} + \frac{1}{L^2}\sum^{}_{n}f(E_n) \cross\\
+    & \sum^{}_{m(\neq n)} \left( \frac{\bra{n}ev_x\ket{m}\bra{m}(-eEy)\ket{n}}{E_n - E_m} + \frac{\bra{n}(-eEy)\ket{m}\bra{m}ev_x\ket{n}}{E_n - E_m} \right)
+\end{split}
+\end{equation}
+where $ f(E_n) $ is the Fermi distribution function. From Heisenberg equation of motion for $v_y$
+\begin{equation}
+    \bra{m}v_y\ket{n} = \frac{1}{i\hbar}(E_n - E_m)\bra{m}y\ket{n}
+\end{equation}
+The transverse conductivity or Hall conductivity is given by :
+\begin{equation}
+    \begin{split}
+        \sigma _{xy} &= \dfrac{\partial}{\partial E} \expval{j_x}_E\\
+        &= -\frac{i\hbar e^2}{L^2}\sum^{}_{n\neq m}f(E_n)\cross \frac{\bra{n}v_x\ket{m}\bra{m}v_y\ket{n} - \bra{n}v_y\ket{m}\bra{m}v_x\ket{n}}{(E_n - E_m)^2}
+    \end{split}
+\end{equation}
+Expressing the position operator in momentum basis, $ x_{\mu} = i\dfrac{\partial}{\partial k_{\mu}} $, we can express the Hall conductivity in terms of Bloch wave functions:
+\begin{equation}
+    \sigma _{xy} = \frac{-ie^2}{\hbar L^2}\sum^{}_{k}\sum^{}_{n \neq m} f(E_n)\left( \dfrac{\partial}{\partial k_x}\bra{u_{nk}}\dfrac{\partial}{\partial k_y}\ket{u_{nk}} - \dfrac{\partial}{\partial k_y}\bra{u_{nk}}\dfrac{\partial}{\partial k_x}\ket{u_{nk}} \right)
+\end{equation}
+Defining \textit{Berry connection} in momentum space as a vector operator:
+\begin{equation}
+    \mathbf{a}_n(k) = -i\bra{u_{nk}}\dfrac{\partial}{\partial k}\ket{u_{nk}}
+\end{equation}
+reduces the expression for Hall conductivity to 
+\begin{equation}
+    \sigma _{xy} = \nu \frac{e^2}{h}
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        \nu &= \sum^{}_{n} \int _{BZ} \frac{d^2k}{2\pi} \left( \dfrac{\partial a_{n,y}}{\partial k_x} - \dfrac{\partial a_{n,x}}{\partial k_y} \right)\\
+        &= \sum^{}_{n} \int _{BZ} \frac{d^2k}{2\pi} \grad \cross \mathbf{a}_n(k)\\
+        &= \sum^{}_{n}\frac{1}{2\pi} \oint _C dk a_n(k)\\
+        &= \sum^{}_{n} \frac{1}{2\pi} \gamma _n(C)
+    \end{split}
+\end{equation}
+$C$ is the loop encircling the first Brillouin zone the 2D momentum space. Single-valued nature of the wave function force $\gamma _n(C)$ to integral multiple of $2\pi$. As a result, $\nu$ can take integer values only and hence $\sigma _{xy}$ is integral multiple of $\frac{e^2}{h}$. The integer $\nu$ is called the \textit{TKNN invariant}, named after the four physicists involved in its development. This integer is a topological index in the sense that it is used to identify different phases in the quantum integer Hall system.
+
+% Let $ \ket{\psi _{nk} } $ be the eigenstate of periodic system represented by the Hamiltonian $ \mathcal{H} $:
+% \begin{equation}
+%     \mathcal{H} \ket{\psi _{nk} } = \mathrm{E}_{nk}\ket{\psi _{nk} }
+% \end{equation}
+% where Bloch's theorem gives the form of the eigenstate as :
+% \begin{equation}
+%     \ket{\psi _{nk} } = e^{ikr}\ket{u_{nk}}
+% \end{equation}
+% Since spatial dependence is through an exponential factor, $\ket{u_{nk}}$ is the eigenket of the cell-periodic Bloch Hamiltonian
+% \begin{equation}
+%     H(k)\ket{u_{nk}} = E_{nk}\ket{u_{nk}}
+% \end{equation}
+% where $ H(k) = e^{-ikr}\mathcal{H}e^{ikr} $. When $\mathcal{H}$ preserves time reversal symmetry, we have :
+% \begin{equation}
+%     H(-k) = \mathcal{T}H(k)\mathcal{T}^{-1}
+% \end{equation}
+% $\mathcal{T}$ being the anti-unitary \textit{time-reversal} operator. As a consequence, the energy bands of TR symmetric system comes in pairs, called \textit{Kramer's pairs}. This is clear if we act $\mathcal{T}$ on Eq-13 :
+% \begin{equation}
+%     \begin{split}
+%         \mathcal{T}H(k)\ket{u_{nk}} &= \mathcal{T} E_{nk}\ket{u_{nk}}\\
+%          H(-k)\mathcal{T}\ket{u_{nk}} &= E_{nk}\mathcal{T}\ket{u_{nk}}\\
+%          H(-k)\ket{u_{n-k}} &= E_{nk}\ket{u_{n-k}}
+%     \end{split}
+% \end{equation}
+% Here, $\ket{u_{nk}}$ and $\ket{u_{n-k}}$ form the \textit{Kramer's pair}. Note that due to periodicity of $k$, there exist special points in the Brillouin zone where the \textit{Kramer's pairs} are degenerate; so the energy bands forming a \textit{Kramer's pair} intersect each other at the edges of the the Brillouin zone.
+
+% For the calculation of the $Z_2$ charge polarization, it is necessary to discuss the matrix representation of TR operator in the Bloch state basis and the Berry connection matrix. The matrix elements of the TR operator is given by:
+% \begin{equation}
+%     \mathrm{w}_{\alpha \beta}(k) = \bra{u_{\alpha,-k}}\mathcal{T}\ket{u_{\beta, k}}
+% \end{equation}
+%  The Berry connection matrix can be represented as a set of three matrices whose elements are
+%  \begin{equation}
+%      \mathbf{a}_{\alpha \beta}(k) = -i\bra{u_{\alpha \beta}}\grad _{k}\ket{u_{\alpha \beta}}
+%  \end{equation}
+%  The relation between $ \mathbf{a}_{\alpha \beta}(k) $ and $ \mathbf{a}_{\alpha \beta}(-k) $ is 
+%  \begin{equation}
+%      \mathbf{a(-k)} = \mathrm{w}(k)\mathbf{a}^{*}(k)\mathrm{w}^{\dagger}(k) + i\mathrm{w}(k)\grad _{k}\mathrm{w}^{\dagger}(k)
+%  \end{equation}
+%  Taking trace and replacing $ -\mathbf{k}  \xrightarrow{}  \mathbf{k} $ 
+%  \begin{equation}
+%      tr[\mathbf{a}(k)] = tr[\mathbf{a}(-k)] + itr[\mathrm{w}^{\dagger}(k)\grad _k\mathrm{w}(k)]
+%  \end{equation}
+
+
+
 \setcounter{equation}{0}
 \setcounter{table}{0}
 \setcounter{figure}{0}
