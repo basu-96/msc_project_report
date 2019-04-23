@@ -1,5 +1,102 @@
-\chapter{\label{results}Results and Discussion}
+\chapter{\label{results}Results}
+ The ground state configuration of kagome lattice with anisotropic ferromagnetic interaction along z-axis and DMI as a rich phase diagram (Fig-1 in \cite{sen_seshadri}). Spin-wave band structure for bulk and strip geometry is present for the phase with ground state configuration having all spins pointing along \textit{z}-direction.
+ 
+\begin{figure}[!h]
+                \centering
+                \begin{tikzpicture}[scale = 0.75]
+                \foreach \x in {0,2,...,8}
+				{\draw[thick, o-] (\x,0)--(\x+1,0);
+				\draw[thick,-o] (\x,1.73)--(\x+1,1.73);
+				\node[below,red] at (\x,1.73) {{\footnotesize A}};
+				\node[below] at (\x+1,1.73) {{\footnotesize B}};
+				\node[left,blue] at (\x+0.5,2.6) {{\footnotesize C}};
+				\draw[thick, o-] (\x,3.46)--(\x+1,3.46);
+				\node[below,red] at (\x+1,3.46) {{\footnotesize A}};
+				\draw[thick, -] (\x,5.2)--(\x+1,5.2);};		
+			\foreach \x in {1,3,5,7} 
+				{\node[below,red] at (\x,0) {{\footnotesize A}};
+				 \draw[thick,*-] (\x,0)--(\x+1,0);
+				 \node[below] at (\x+1,0) {{\footnotesize B}};
+				 \node[left,blue] at (\x+0.5,0.87) {{\footnotesize C}};
+				 \draw[thick,-*] (\x,1.73)--(\x+1,1.73);
+				 \draw[thick,*-] (\x,3.46)--(\x+1,3.46);
+				 \node[below] at (\x+1,3.46) {{\footnotesize B}};
+				 \node[left,blue] at (\x+0.5,4.33) {{\footnotesize C}};
+				 \draw[thick,-] (\x,5.2)--(\x+1,5.2);};
+			\foreach \x in {1,3,5}
+				{\draw[thick] (\x,0) -- (\x+3.5,6.06);};
+			\draw[thick] (7,0) -- (9,3.46);
+			\draw[thick] (2,0) -- (0,3.46);
+			\draw[thick] (0,1.73)--(2.5,6.06);
+			\draw[thick] (9,1.73)--(6.5,6.06);
+			\foreach \x in {4,6,8}
+				{\draw[thick] (\x,0) -- (\x-3.5,6.06);
+				\node[below,red] at (\x,5.2) {{\footnotesize A}};
+				\node[below] at (\x+1,5.2) {{\footnotesize B}};
+				\node[left,blue] at (\x+0.5,6.06) {{\footnotesize C}};};
+                \end{tikzpicture}
+                \caption{Kagome lattice}
+\end{figure}
+ \begin{figure}
+ \centering
+        \begin{tikzpicture}[scale=3.5,cap=round,>=latex]
+	% Radius of regular polygons
+	\newdimen\R
+	\R=0.8cm
+	\coordinate (center) at (0,0);
+	\draw (0:\R)
+	\foreach \x in {60,120,...,360} {  -- (\x:\R) }
+%	-- cycle (300:\R) node[below] {$\csc \theta$}
+%	-- cycle (240:\R) node[below] {$\sec \theta$}
+%	-- cycle (180:\R) node[left] {$\tan \theta$}
+%	-- cycle (120:\R) node[above] {$\sin \theta$}
+%	-- cycle (60:\R) node[above] {$\cos \theta$}
+	-- cycle (0:0) node[right] {$ \Gamma $}
+	-- cycle (0:\R) node[right] {$ \mathrm{K} $}
+	-- cycle (30:0.9*\R) node[right] {$\mathrm{M}$};
+	\draw[->,thick] (0,0) -- cycle (30:0.9*\R);
+	\end{tikzpicture}
+        \caption{First Brillouin zone}
+\end{figure}
+% \begin{figure}[!h]
+%     \centering
+%     \resizebox{0.5\textwidth}{!}{\input{latex_plots/mook_plot.tex}}
+%     \caption{Caption}
+%     \label{fig:my_label}
+% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{latex_plots/kagome_D_2_sqrt(3).png}
+    \caption{Magnon energy dispersion in the bulk with $\Delta =2$ and $\frac{D}{J} = \frac{2}{\sqrt{3}}$}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{latex_plots/kagome_D_4_sqrt(3).png}
+    \caption{Magnon energy dispersion in the bulk with $\Delta =2$ and $\frac{D}{J} = \frac{4}{\sqrt{3}}$}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.5]{latex_plots/phase_1_2_sqrt(3).png}
+    \caption{Magnon energy dispersion for strip geometry with $\Delta =2$ and $\frac{D}{J} = \frac{2}{\sqrt{3}}$}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.5]{latex_plots/phase_1_4_sqrt(3).png}
+    \caption{Magnon energy dispersion for strip geometry with $\Delta =2$ and $\frac{D}{J} = \frac{4}{\sqrt{3}}$}
+\end{figure}
+\clearpage
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{latex_plots/mook.png}
+    \caption{Magnon energy dispersion in the bulk with $\Delta = 0$ and $D=|J|$}
+\end{figure}
+The generic nature of the spin-wave formalism allows us to calculate the band structure of other Bravais lattices quite easily - change of lattice amounts to changing the lattice parameters and calculating the corresponding Brillouin, the diagonalisation procedure being the same. As an example, the dispersion relation for a honeycomb lattice with ferromagnetic interaction is presented\cite{owerre_honeycomb_magnon}.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.4]{latex_plots/honeycomb_spectrum_mesh_size_3969.png}
+    \caption{Magnon energy dispersion for Honeycomb lattic with $\Delta = 1$, $D=0$}
+\end{figure}
 \setcounter{equation}{0}
 \setcounter{table}{0}
 \setcounter{figure}{0}
